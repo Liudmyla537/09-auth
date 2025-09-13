@@ -64,6 +64,11 @@
     background-color: #e2e6ea;
 }
 
+.requiredHint {
+    color: #dc3545;
+    font-size: 12px;
+}
+
 .error {
     color: #dc3545;
     font-size: 12px;

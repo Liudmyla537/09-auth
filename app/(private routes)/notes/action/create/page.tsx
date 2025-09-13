@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 export default function CreateNotePage () {
   return (
     <div>
-      Create Note Page - Form will go here
       <main className={css.main}>
         <div className={css.container}>
           <h1 className={css.title}>Create note</h1>

@@ -89,7 +89,6 @@ export default function NoteForm() {
           name="title"
           id="title"
           className={css.input}
-          placeholder="The title of the note"
           required
           defaultValue={draft?.title}
           onChange={handleChange}
@@ -105,7 +104,6 @@ export default function NoteForm() {
           id="content"
           rows={8}
           className={css.textarea}
-          placeholder="Content of the note"
           defaultValue={draft?.content}
           onChange={handleChange}
         />
