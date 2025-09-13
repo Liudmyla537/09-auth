@@ -20,3 +20,4 @@ export default function AuthLayout ({ children }: AuthLayoutProps) {
   return <>{loading ? <div>Loading...</div> : children}</>;
 };
 
+

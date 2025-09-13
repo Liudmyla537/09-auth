@@ -33,7 +33,7 @@ export async function generateMetadata({params}:Props):Promise<Metadata> {
     openGraph: {
       title: `NoteHub - ${slug[0]} notes`,
       description,
-      url: `https://07-routing-nextjs-sable.vercel.app/notes/filter/${slug.join("/")}`,
+      url: `https://09-auth-pi-blue.vercel.app//notes/filter/${slug.join("/")}`,
       siteName: 'NoteHub',
       type: "website",
       images: [

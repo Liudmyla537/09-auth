@@ -68,6 +68,7 @@ export default function EditProfile() {
           alt="User Avatar"
           width={120}
           height={120}
+          priority
           className={css.avatar}
         />
 
