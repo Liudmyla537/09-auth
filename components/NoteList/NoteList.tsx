@@ -1,52 +1,55 @@
-import css from "./NoteList.module.css";
-import { Note } from "@/types/note";
-import { deleteNote } from "@/lib/api";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
-import Link from "next/link";
+import type { Note } from '@/types/note';
+import { deleteNote } from '@/lib/api/clientApi';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import css from './NoteList.module.css';
+import Link from 'next/link';
 
 interface NoteListProps {
   notes: Note[];
+  onDelete?: (id: string) => void;
 }
 
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
-  const delMutation = useMutation({
-    mutationFn: (id: string) => deleteNote(id),
+
+  const deleteNoteMutation = useMutation({
+    mutationFn: deleteNote,
     onSuccess: () => {
-      toast("Note deleted succesfuly!!!")
-      queryClient.invalidateQueries({ queryKey: ["notes"] });
-    },
-    onError: (error) => {
-      console.error("Error:", error);
+      queryClient.invalidateQueries({ queryKey: ['notes'] });
+      console.log('Note deleted successfully');
     },
   });
 
   const handleDelete = (id: string) => {
-    delMutation.mutate(id);
+    deleteNoteMutation.mutate(id);
   };
 
+  if (!notes || notes.length === 0) {
+    return <div>No notes found.</div>;
+  }
+
   return (
-    <ul className={css.list}>
-      {notes.map((note) => (
-        <li className={css.listItem} key={note.id}>
-          <h2 className={css.title}>{note.title}</h2>
-          <p className={css.content}>{note.content}</p>
-          <div className={css.footer}>
-            <span className={css.tag}>{note.tag}</span>
-              <Link href={`/notes/${note.id}`} as={`/notes/${note.id}`} scroll={false}>
-                View details
-              </Link>
-            <button
-              className={css.button}
-              onClick={() => handleDelete(note.id)}
-              disabled={delMutation.isPending}
-            >
-              {delMutation.isPending ? "Deleting..." : "Delete"}
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h2>NoteList</h2>
+      <ul className={css.list}>
+        {notes.map(note => (
+          <li key={note.id} className={css.listItem}>
+            <h2 className={css.title}>{note.title}</h2>
+            <p className={css.content}>{note.content}</p>
+            <div className={css.footer}>
+              <span className={css.tag}>{note.tag}</span>
+              <Link href={`/notes/${note.id}`}>View details</Link>
+              <button
+                className={css.button}
+                onClick={() => handleDelete(note.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

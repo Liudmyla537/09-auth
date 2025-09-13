@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
-import {  Roboto } from "next/font/google";
-import "./globals.css";
-import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import { Toaster } from "react-hot-toast";
-
-
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
+import './globals.css';
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -39,21 +37,23 @@ export default function RootLayout({
   children,
   modal,
 }: Readonly<{
-  children: React.ReactNode; modal: React.ReactNode
+  children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={roboto.variable}>
         <TanStackProvider>
-          <Header />
-          <main>
-            {children}
-            { modal }
-          </main>
-          <Footer />
-          <Toaster position="top-center" reverseOrder={false} />
+          <AuthProvider>
+            <Header />
+            <main>
+              {children}
+              {modal}
+            </main>
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
-     </body>
+      </body>
     </html>
   );
 }
