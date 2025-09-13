@@ -3,7 +3,7 @@ import type { Note } from '@/types/note';
 
 import { nextServer } from './api';
 
-export interface NoteHttpResponse {
+export interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
   page: number;
@@ -17,7 +17,7 @@ export interface FetchNotesParams {
 }
 
 export const fetchNotes = async (params: FetchNotesParams) => {
-  const response = await nextServer.get<NoteHttpResponse>('/notes', {
+  const response = await nextServer.get<FetchNotesResponse>('/notes', {
     params: {
       search: params.search,
       page: params.page,

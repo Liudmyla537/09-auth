@@ -17,7 +17,7 @@ type NotesClientProps = {
   tag?: string;
 };
 
-const NotesClient = ({ tag }: NotesClientProps) => {
+export default function NotesClient({ tag }: NotesClientProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -68,4 +68,3 @@ const NotesClient = ({ tag }: NotesClientProps) => {
   );
 };
 
-export default NotesClient;

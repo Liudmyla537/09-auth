@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import TagsMenu from '@/components/TagsMenu/TagsMenu';
-
 import css from './Header.module.css';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 
-async function Header() {
+export default async function Header() {
   return (
     <header className={css.header}>
       <Link href="/" aria-label="Home">
@@ -28,5 +27,3 @@ async function Header() {
     </header>
   );
 }
-
-export default Header;

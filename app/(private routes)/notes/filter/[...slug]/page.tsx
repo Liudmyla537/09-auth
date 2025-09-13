@@ -48,7 +48,7 @@ export async function generateMetadata({params}:Props):Promise<Metadata> {
   }
 }
 
-const NotesPage = async ({ params }: Props) => {
+export default async function NotesPage ({ params }: Props) {
   const { slug } = await params;
 
   const tag = slug[0] === 'All' ? undefined : slug[0];
@@ -65,4 +65,3 @@ const NotesPage = async ({ params }: Props) => {
   );
 };
 
-export default NotesPage;

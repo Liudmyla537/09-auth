@@ -35,7 +35,7 @@ export async function generateMetadata({params}:Props): Promise<Metadata> {
   }
 }
 
-const NoteDetails = async ({ params }: Props) => {
+export default async function NoteDetails ({ params }: Props) {
   const { id } = await params;
   const queryClient = new QueryClient();
 
@@ -51,4 +51,3 @@ const NoteDetails = async ({ params }: Props) => {
   );
 };
 
-export default NoteDetails;

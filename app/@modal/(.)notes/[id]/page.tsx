@@ -11,7 +11,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-const NotePreview = async ({ params }: Props) => {
+export default async function NotePreview  ({ params }: Props) {
   const { id } = await params;
   const queryClient = new QueryClient();
 
@@ -27,4 +27,3 @@ const NotePreview = async ({ params }: Props) => {
   );
 };
 
-export default NotePreview;

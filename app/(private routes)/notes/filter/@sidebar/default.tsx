@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import css from './SidebarNotes.module.css';
 
-const NoteSidebar = async () => {
+export default async function NoteSidebar () {
   const Tags = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
 
   return (
@@ -31,4 +31,3 @@ const NoteSidebar = async () => {
   );
 };
 
-export default NoteSidebar;

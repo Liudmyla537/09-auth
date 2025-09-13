@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     }
 };
 
-const NotFound = () => {
+export default function NotFound () {
   return (
     <div className={css.container}>
       <h1 className={css.title}>404 - Page Not Found</h1>
@@ -32,4 +32,3 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;

@@ -6,7 +6,7 @@ import { fetchNoteById } from '@/lib/api/clientApi';
 
 import css from './NoteDetails.module.css';
 
-const NoteDetailsClient = () => {
+export default function NoteDetailsClient () {
   const { id } = useParams<{ id: string }>();
 
   const {
@@ -52,7 +52,7 @@ const NoteDetailsClient = () => {
   );
 };
 
-export default NoteDetailsClient;
+
 
   
 

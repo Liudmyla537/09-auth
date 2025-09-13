@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-const CreateNotePage = () => {
+export default function CreateNotePage () {
   return (
     <div>
       Create Note Page - Form will go here
@@ -34,4 +34,3 @@ const CreateNotePage = () => {
   );
 };
 
-export default CreateNotePage;

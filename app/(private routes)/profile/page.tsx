@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const pageProfile = async () => {
+export default async function pageProfile () {
   const user = await getServerMe();
 
   return (
@@ -58,4 +58,3 @@ const pageProfile = async () => {
   );
 };
 
-export default pageProfile;

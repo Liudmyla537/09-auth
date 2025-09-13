@@ -4,7 +4,7 @@ import { useState } from 'react';
 import css from './TagsMenu.module.css';
 import Link from 'next/link';
 
-const TagsMenu = () => {
+export default function TagsMenu () {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -43,4 +43,3 @@ const TagsMenu = () => {
   );
 };
 
-export default TagsMenu;

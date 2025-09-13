@@ -4,15 +4,12 @@ import { User } from '@/types/user';
 import { Note } from '@/types/note';
 
 export const checkServerSession = async () => {
-  // Get current cookies
   const cookieStore = await cookies();
   const res = await nextServer.get('/auth/session', {
     headers: {
-      // Pass cookies on
       Cookie: cookieStore.toString(),
     },
   });
-  // Return full response so middleware has access to new cookies
   return res;
 };
 
@@ -26,7 +23,7 @@ export const getServerMe = async (): Promise<User> => {
   return data;
 };
 
-export interface NoteHttpResponse {
+export interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
   page: number;
@@ -40,7 +37,7 @@ export interface FetchNotesParams {
 }
 
 export const fetchNotes = async (params: FetchNotesParams) => {
-  const response = await nextServer.get<NoteHttpResponse>('/notes', {
+  const response = await nextServer.get<FetchNotesResponse>('/notes', {
     params: {
       search: params.search,
       page: params.page,

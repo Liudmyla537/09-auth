@@ -11,7 +11,7 @@ interface NotePreviewClientProps {
   id: string;
 }
 
-const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
+export default function NotePreviewClient ({ id }: NotePreviewClientProps) {
   const {
     data: note,
     isLoading,
@@ -56,4 +56,3 @@ const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
   );
 };
 
-export default NotePreviewClient;

@@ -5,7 +5,7 @@ type Props = {
   reset: () => void;
 };
 
-const Error = ({ error, reset }: Props) => {
+export default function Error ({ error, reset }: Props) {
   return (
     <div>
       <h2>Error loading data</h2>
@@ -15,4 +15,3 @@ const Error = ({ error, reset }: Props) => {
   );
 };
 
-export default Error;
