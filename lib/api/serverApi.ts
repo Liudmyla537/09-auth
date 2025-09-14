@@ -36,7 +36,8 @@ export interface FetchNotesParams {
   tag?: string;
 }
 
-export const fetchNotes = async (params: FetchNotesParams) => {
+export const fetchNotes = async (params: FetchNotesParams):Promise<NoteHttpResponse> => {
+  const cookieStore = await cookies();
   const response = await nextServer.get<NoteHttpResponse>('/notes', {
     params: {
       search: params.search,
@@ -51,7 +52,8 @@ export const fetchNotes = async (params: FetchNotesParams) => {
   return response.data;
 };
 
-export const fetchNoteById = async (id: string) => {
+export const fetchNoteById = async (id: string):Promise<Note> => {
+  const cookieStore = await cookies();
   const response = await nextServer.get<Note>(`/notes/${id}`, {
     headers: {
       Cookie: cookieStore.toString(),
